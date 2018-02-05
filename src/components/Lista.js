@@ -1,9 +1,9 @@
 import React from 'react';
-import Contato from './Contato';
+import ContatoPreview from './ContatoPreview';
 
 const Contatos = () => (
   <div>
-    <Contato />
+    <ContatoPreview />
   </div>
 );
 
