@@ -14,7 +14,13 @@ export const addContato = ({
   },
 });
 
-export const removeContato = id => ({
+export const removeContato = ({ id }) => ({
   type: 'REMOVE_CONTATO',
   id,
+});
+
+export const editContato = (id, updates) => ({
+  type: 'EDIT_CONTATO',
+  id,
+  updates,
 });
