@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import Header from './components/Header';
 import ListaContatos from './components/ListaContatos';
 import InfoContato from './components/InfoContato';
+import WrappedContactForm from './components/FormContato';
 import { addContato, removeContato, editContato } from './actions/contatos';
 import setTextFilter from './actions/filter';
 import getVisibleContatos from './selectors/contatos';
@@ -42,17 +43,17 @@ store.dispatch(addContato({
   endereco: 'aaaa',
 }));
 
-store.dispatch(removeContato({ id: contatoUm.contato.id }));
+// store.dispatch(removeContato({ id: contatoUm.contato.id }));
 
-store.dispatch(editContato(contatoDois.contato.id, {
-  nome: 'timmy',
-  sobrenome: 'Smith',
-  email: 'asda',
-  telefone: 2232,
-  endereco: 'aaaa',
-}));
+// store.dispatch(editContato(contatoDois.contato.id, {
+//   nome: 'timmy',
+//   sobrenome: 'Smith',
+//   email: 'asda',
+//   telefone: 2232,
+//   endereco: 'aaaa',
+// }));
 
-store.dispatch(setTextFilter('asda'));
+// store.dispatch(setTextFilter('asda'));
 
 const jsx = (
   <Provider store={store}>
@@ -60,6 +61,7 @@ const jsx = (
       <Header />
       <ListaContatos />
       <InfoContato />
+      <WrappedContactForm />
       <Footer />
     </div>
   </Provider>

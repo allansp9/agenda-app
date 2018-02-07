@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import contatosReducer from '../reducers/contatos';
 import filterReducer from '../reducers/filter';
@@ -10,6 +11,7 @@ export default () => {
     combineReducers({
       contatos: contatosReducer,
       filter: filterReducer,
+      form: formReducer,
     }),
     composeEnhancers(applyMiddleware(thunk)),
   );
