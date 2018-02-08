@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import PreviewContato from './PreviewContato';
 import selectContatos from '../selectors/contatos';
 
-const ListaContatos = props => (
-  <div>{props.contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}</div>
+const ListaContatos = ({ contatos }) => (
+  <div>{contatos.map(contato => <PreviewContato key={contato.id} nome={contato.nome} />)}</div>
 );
 
-const mapstateToProps = state => ({
-  contatos: selectContatos(state.contatos, state.filter),
+const mapStateToProps = state => ({
+  contatos: selectContatos(state.contatos, state.form.busca.values.buscar),
 });
 
-export default connect(mapstateToProps)(ListaContatos);
+export default connect(mapStateToProps)(ListaContatos);

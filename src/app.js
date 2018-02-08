@@ -13,35 +13,13 @@ import setTextFilter from './actions/filter';
 import getVisibleContatos from './selectors/contatos';
 import Footer from './components/Footer';
 import './styles/styles.scss';
+import contatos from './mock/contatos';
 
 const store = configureStore();
-store.subscribe(() => {
-  const state = store.getState();
-  console.log(getVisibleContatos(state.contatos, state.filter));
-});
 
-const contatoUm = store.dispatch(addContato({
-  nome: 'Allan',
-  sobrenome: 'Pereira',
-  email: 'asda',
-  telefone: 2232,
-  endereco: 'aaaa',
-}));
-
-const contatoDois = store.dispatch(addContato({
-  nome: 'Tony',
-  sobrenome: 'Pereira',
-  email: 'asda',
-  telefone: 2232,
-  endereco: 'aaaa',
-}));
-store.dispatch(addContato({
-  nome: 'Bambi',
-  sobrenome: 'Pereira',
-  email: 'asda',
-  telefone: 2232,
-  endereco: 'aaaa',
-}));
+store.dispatch(addContato(contatos[0]));
+store.dispatch(addContato(contatos[1]));
+store.dispatch(addContato(contatos[2]));
 
 // store.dispatch(removeContato({ id: contatoUm.contato.id }));
 
