@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import Header from './components/Header';
 import ListaContatos from './components/ListaContatos';
-import InfoContato from './components/InfoContato';
+import Dashboard from './components/Dashboard';
 import WrappedContactForm from './components/FormContato';
 import { addContato, removeContato, editContato } from './actions/contatos';
 import setTextFilter from './actions/filter';
@@ -36,11 +36,7 @@ store.dispatch(addContato(contatos[2]));
 const jsx = (
   <Provider store={store}>
     <div>
-      <Header />
-      <ListaContatos />
-      <InfoContato />
-      <WrappedContactForm />
-      <Footer />
+      <Dashboard />
     </div>
   </Provider>
 );

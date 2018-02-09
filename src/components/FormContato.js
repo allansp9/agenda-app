@@ -3,8 +3,10 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { addContato } from '../actions/contatos';
 
-let ContactForm = ({ handleSubmit, contatos }) => (
-  <form onSubmit={handleSubmit}>
+// const onSubmit = values => console.log(values);
+
+const ContactForm = props => (
+  <form onSubmit={props.handleSubmit(props.onSubmit)}>
     <div>
       <label htmlFor="nome">
         Nome
@@ -39,22 +41,22 @@ let ContactForm = ({ handleSubmit, contatos }) => (
   </form>
 );
 
-const mapDispatchToProps = dispatch => ({
-  onMySubmit: (values) => {
-    dispatch(addContato(values));
-  },
-});
+// const mapDispatchToProps = dispatch => ({
+//   onSubmit: (values) => {
+//     dispatch(addContato(values));
+//   },
+// });
 
 const mapStateToProps = state => ({
   contatos: state.contatos,
 });
 
-ContactForm = reduxForm({
+const WrappedContactForm = reduxForm({
   form: 'contatos',
 })(ContactForm);
 
-ContactForm = connect(state => ({
+const ConnectedContactForm = connect(state => ({
   initialValues: state.contatos[4] || {},
-}))(ContactForm);
+}))(WrappedContactForm);
 
-export default ContactForm;
+export default ConnectedContactForm;
