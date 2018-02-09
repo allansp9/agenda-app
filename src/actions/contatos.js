@@ -14,12 +14,12 @@ export const addContato = ({
   },
 });
 
-export const removeContato = ({ id }) => ({
+export const removeContatoAction = ({ id }) => ({
   type: 'REMOVE_CONTATO',
   id,
 });
 
-export const editContato = (id, updates) => ({
+export const editContatoAction = (id, updates) => ({
   type: 'EDIT_CONTATO',
   id,
   updates,
