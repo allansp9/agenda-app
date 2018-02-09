@@ -5,8 +5,8 @@ import { addContato } from '../actions/contatos';
 
 // const onSubmit = values => console.log(values);
 
-const ContactForm = props => (
-  <form onSubmit={props.handleSubmit(props.onSubmit)}>
+const ContactForm = ({ handleSubmit, onSubmit }) => (
+  <form>
     <div>
       <label htmlFor="nome">
         Nome
@@ -26,18 +26,20 @@ const ContactForm = props => (
       </label>
     </div>
     <div>
-      <label htmlFor="tel">
-        Telefone
-        <Field name="tel" component="input" type="tel" />
-      </label>
-    </div>
-    <div>
       <label htmlFor="endereco">
         Endereço
         <Field name="endereco" component="input" type="text" />
       </label>
     </div>
-    <button type="submit">Submit</button>
+    <div>
+      <label htmlFor="telefone">
+        Telefone
+        <Field name="telefone" component="input" type="tel" />
+      </label>
+    </div>
+    <button type="submit" onClick={handleSubmit}>
+      Submit
+    </button>
   </form>
 );
 
@@ -49,14 +51,11 @@ const ContactForm = props => (
 
 const mapStateToProps = state => ({
   contatos: state.contatos,
+  initialValues: state.active.activeUser,
 });
 
 const WrappedContactForm = reduxForm({
   form: 'contatos',
 })(ContactForm);
 
-const ConnectedContactForm = connect(state => ({
-  initialValues: state.contatos[4] || {},
-}))(WrappedContactForm);
-
-export default ConnectedContactForm;
+export default connect(mapStateToProps)(WrappedContactForm);

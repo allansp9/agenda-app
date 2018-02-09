@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import FormContato from './FormContato';
-import addContato from '../actions/contatos';
+import { addContato } from '../actions/contatos';
 
-class AddContato extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Adicionando</h1>
-        <FormContato onSubmit={contato => console.log(contato)} />
-      </div>
-    );
-  }
-}
-
-// const mapDispatchToProps = dispatch => ({
-//   add: contato => dispatch(addContato(contato)),
-// });
+const AddContato = props => (
+  <div>
+    <h1>Adicionando</h1>
+    <FormContato onSubmit={data => props.dispatch(addContato(data))} />
+  </div>
+);
 
 export default connect()(AddContato);

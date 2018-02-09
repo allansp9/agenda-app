@@ -9,8 +9,8 @@ export const addContato = ({
     nome,
     sobrenome,
     email,
-    telefone,
     endereco,
+    telefone,
   },
 });
 

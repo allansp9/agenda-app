@@ -1,4 +1,4 @@
-export default (activePage, activeUser) => ({
+export default (activePage = '', activeUser = {}) => ({
   type: 'SET_ACTIVE',
   activePage,
   activeUser,
