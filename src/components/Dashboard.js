@@ -7,19 +7,19 @@ import EditContato from './EditContato';
 import Footer from './Footer';
 import Header from './Header';
 
-const Dashboard = ({ active }) => (
+const Dashboard = ({ activePage }) => (
   <div>
     <Header />
     <ListaContatos />
-    {active === 'info' && <InfoContato />}
-    {active === 'add' && <AddContato />}
-    {active === 'edit' && <EditContato />}
+    {activePage === 'info' && <InfoContato />}
+    {activePage === 'add' && <AddContato />}
+    {activePage === 'edit' && <EditContato />}
     <Footer />
   </div>
 );
 
 const mapStateToProps = state => ({
-  active: state.active.activePage,
+  activePage: state.active.activePage,
 });
 
 export default connect(mapStateToProps)(Dashboard);
