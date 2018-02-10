@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import isEmail from 'sane-email-validation';
+import normalizePhone from '../selectors/normalizePhone';
 
 const renderInput = ({ input, meta, label }) => (
   <div>
@@ -54,7 +55,7 @@ const ContactForm = ({ handleSubmit, onSubmit }) => (
 
     <Field name="endereco" label="Endereco" component={renderInput} />
 
-    <Field name="telefone" label="Telefone" component={renderInput} />
+    <Field name="telefone" label="Telefone" component={renderInput} normalize={normalizePhone} />
 
     <div>
       <label htmlFor="foto">
