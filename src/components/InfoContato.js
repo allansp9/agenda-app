@@ -4,6 +4,7 @@ import setActive from '../actions/active';
 
 const InfoContato = ({ contato, setActive }) => (
   <div>
+    <img src={contato.foto[0].preview} alt="avatar" />
     <h1>{contato.nome}</h1>
     <h3>{contato.sobrenome}</h3>
     <h3>{contato.email}</h3>

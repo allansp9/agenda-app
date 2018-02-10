@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 
 export const addContato = ({
-  nome, sobrenome, email, telefone, endereco,
+  nome, sobrenome, email, endereco, telefone, foto,
 }) => ({
   type: 'ADD_CONTATO',
   contato: {
@@ -11,6 +11,7 @@ export const addContato = ({
     email,
     endereco,
     telefone,
+    foto,
   },
 });
 

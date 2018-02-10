@@ -13,25 +13,8 @@ import setTextFilter from './actions/filter';
 import getVisibleContatos from './selectors/contatos';
 import Footer from './components/Footer';
 import './styles/styles.scss';
-import contatos from './mock/contatos';
 
 const store = configureStore();
-
-store.dispatch(addContato(contatos[0]));
-store.dispatch(addContato(contatos[1]));
-store.dispatch(addContato(contatos[2]));
-
-// store.dispatch(removeContato({ id: contatoUm.contato.id }));
-
-// store.dispatch(editContato(contatoDois.contato.id, {
-//   nome: 'timmy',
-//   sobrenome: 'Smith',
-//   email: 'asda',
-//   telefone: 2232,
-//   endereco: 'aaaa',
-// }));
-
-// store.dispatch(setTextFilter('asda'));
 
 const jsx = (
   <Provider store={store}>

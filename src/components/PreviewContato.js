@@ -3,25 +3,24 @@ import { connect } from 'react-redux';
 import setActive from '../actions/active';
 
 const PreviewContato = ({
-  id, nome, setActive, sobrenome, email, endereco, telefone,
+  id, nome, setActive, sobrenome, email, endereco, telefone, foto,
 }) => (
-  <div>
-    <h3>{nome}</h3>
-    <button
-      onClick={() =>
-        setActive('info', {
-          id,
-          nome,
-          sobrenome,
-          email,
-          endereco,
-          telefone,
-        })
-      }
-    >
-      Info
-    </button>
-  </div>
+  <button
+    href=""
+    onClick={() =>
+      setActive('info', {
+        id,
+        nome,
+        sobrenome,
+        email,
+        endereco,
+        telefone,
+        foto,
+      })
+    }
+  >
+    {nome}
+  </button>
 );
 
 const mapDispatchToProps = dispatch => ({

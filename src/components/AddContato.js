@@ -7,6 +7,7 @@ import setActiveAction from '../actions/active';
 const adicionarContato = (props) => {
   props.dispatch(addContato(props.data));
   props.dispatch(setActiveAction('info', props.data));
+  console.log(props.data);
 };
 
 const AddContato = props => (

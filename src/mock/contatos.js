@@ -5,6 +5,7 @@ export default [
     endereco: 'rua da saudade',
     telefone: 91112244,
     email: 'juninho@play.com',
+    foto: [{}],
   },
   {
     nome: 'Belo',
@@ -12,6 +13,7 @@ export default [
     endereco: 'rua da babosa',
     telefone: 911155532244,
     email: 'belo@play.com',
+    foto: [{}],
   },
   {
     nome: 'Tevez',
@@ -19,5 +21,6 @@ export default [
     endereco: 'rua da taquera',
     telefone: 23324,
     email: 'tevez@play.com',
+    foto: [{}],
   },
 ];

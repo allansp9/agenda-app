@@ -1,45 +1,68 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { addContato } from '../actions/contatos';
+import Dropzone from 'react-dropzone';
+import isEmail from 'sane-email-validation';
 
-// const onSubmit = values => console.log(values);
+const renderInput = ({ input, meta, label }) => (
+  <div>
+    <label htmlFor={label}>
+      {label}
+      <input {...input} />
+    </label>
+    {meta.touched && meta.error && <span className="error">{meta.error}</span>}
+  </div>
+);
+
+const renderDropzoneInput = ({ input, meta, label }) => {
+  const files = input.value;
+  return (
+    <div>
+      <Dropzone
+        name={input.name}
+        onDrop={(filesToUpload, e) => input.onChange(filesToUpload)}
+        accept="image/jpeg, image/png"
+        multiple={false}
+      >
+        <div>Try dropping some files here, or click to select files to upload.</div>
+      </Dropzone>
+      {meta.touched && meta.error && <span className="error">{meta.error}</span>}
+    </div>
+  );
+};
+
+const validate = (values) => {
+  const errors = {};
+  if (!values.nome) {
+    errors.nome = 'Required';
+  }
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!isEmail(values.email)) {
+    errors.email = 'Invalid Email';
+  }
+  return errors;
+};
 
 const ContactForm = ({ handleSubmit, onSubmit }) => (
-  <form>
+  <form onSubmit={handleSubmit}>
+    <Field name="nome" label="Nome" component={renderInput} />
+
+    <Field name="sobrenome" label="Sobrenome" component={renderInput} />
+
+    <Field name="email" label="email" component={renderInput} />
+
+    <Field name="endereco" label="Endereco" component={renderInput} />
+
+    <Field name="telefone" label="Telefone" component={renderInput} />
+
     <div>
-      <label htmlFor="nome">
-        Nome
-        <Field name="nome" component="input" type="text" />
+      <label htmlFor="foto">
+        Foto
+        <Field name="foto" component={renderDropzoneInput} />
       </label>
     </div>
-    <div>
-      <label htmlFor="sobrenome">
-        Sobrenome
-        <Field name="sobrenome" component="input" type="text" />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="email">
-        Email
-        <Field name="email" component="input" type="email" />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="endereco">
-        Endereço
-        <Field name="endereco" component="input" type="text" />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="telefone">
-        Telefone
-        <Field name="telefone" component="input" type="tel" />
-      </label>
-    </div>
-    <button type="submit" onClick={handleSubmit}>
-      Submit
-    </button>
+    <button type="submit">Submit</button>
   </form>
 );
 
@@ -56,6 +79,7 @@ const mapStateToProps = state => ({
 
 const WrappedContactForm = reduxForm({
   form: 'contatos',
+  validate,
 })(ContactForm);
 
 export default connect(mapStateToProps)(WrappedContactForm);
