@@ -1,19 +1,20 @@
 import uuid from 'uuid';
+import db from '../../db';
 
-export const addContato = ({
-  nome, sobrenome, email, endereco, telefone, foto,
-}) => ({
-  type: 'ADD_CONTATO',
-  contato: {
-    id: uuid(),
-    nome,
-    sobrenome,
-    email,
-    endereco,
-    telefone,
-    foto,
-  },
-});
+export const startAddContato = (contatoData = {}) => (dispatch) => {
+  db
+    .table('contatos')
+    .add(contatoData)
+    .then((id) => {
+      dispatch({
+        type: 'ADD_CONTATO',
+        contato: {
+          id,
+          ...contatoData,
+        },
+      });
+    });
+};
 
 export const removeContatoAction = ({ id }) => ({
   type: 'REMOVE_CONTATO',

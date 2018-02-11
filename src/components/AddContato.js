@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import FormContato from './FormContato';
-import { addContato } from '../actions/contatos';
+import { startAddContato } from '../actions/contatos';
 import setActiveAction from '../actions/active';
 
 const adicionarContato = (props) => {
-  props.dispatch(addContato(props.data));
-  props.dispatch(setActiveAction('info', props.data));
+  props.dispatch(startAddContato(props.data));
+  // props.dispatch(setActiveAction('info', props.data));
 };
 
 const AddContato = props => (
