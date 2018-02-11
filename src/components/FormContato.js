@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import isEmail from 'sane-email-validation';
-import normalizePhone from '../selectors/normalizePhone';
+import { normalizePhone } from '../selectors/normalizeForm';
 
 const renderInput = ({ input, meta, label }) => (
   <div>
@@ -15,19 +15,18 @@ const renderInput = ({ input, meta, label }) => (
   </div>
 );
 
-const renderDropzoneInput = ({ input, meta, label }) => {
-  const files = input.value;
+const renderDropzoneInput = (field) => {
+  const files = field.input.value;
   return (
     <div>
       <Dropzone
-        name={input.name}
-        onDrop={(filesToUpload, e) => input.onChange(filesToUpload)}
-        accept="image/jpeg, image/png"
-        multiple={false}
+        name={field.name}
+        onDrop={(filesToUpload, e) => field.input.onChange(filesToUpload)}
       >
         <div>Try dropping some files here, or click to select files to upload.</div>
       </Dropzone>
-      {meta.touched && meta.error && <span className="error">{meta.error}</span>}
+      {field.meta.error && <span className="error">{field.meta.error}</span>}
+      {!field.meta.error && files && <p>{files[0].name}</p>}
     </div>
   );
 };
@@ -36,11 +35,21 @@ const validate = (values) => {
   const errors = {};
   if (!values.nome) {
     errors.nome = 'Required';
+  } else if (!values.nome.match(/^[a-zA-Z ]+$/)) {
+    errors.nome = 'Nome inválido';
+  }
+  if (!values.sobrenome) {
+    errors.sobrenome = 'Required';
+  } else if (values.sobrenome === values.nome || !values.sobrenome.match(/^[a-zA-Z ]+$/)) {
+    errors.sobrenome = 'Sobrenome inválido';
   }
   if (!values.email) {
     errors.email = 'Required';
   } else if (!isEmail(values.email)) {
     errors.email = 'Invalid Email';
+  }
+  if (values.foto && values.foto[0].size > 200000) {
+    errors.foto = 'File size too big! (max: 200kb)';
   }
   return errors;
 };
