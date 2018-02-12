@@ -31,12 +31,10 @@ const renderDropzoneInput = (field) => {
               image.height = 100;
               image.title = filesToUpload[0].name;
               image.src = reader.result;
-              // preview.appendChild( image );
-              field.input.onChange(image.src);
+              field.input.onChange(filesToUpload[0]);
             },
             false,
           );
-
           reader.readAsDataURL(filesToUpload[0]);
         }}
       >
@@ -64,9 +62,9 @@ const validate = (values) => {
   } else if (!isEmail(values.email)) {
     errors.email = 'Invalid Email';
   }
-  // if (values.foto && values.foto[0].size > 200000) {
-  //   errors.foto = 'File size too big! (max: 200kb)';
-  // }
+  if (values.foto && values.foto.size > 200000) {
+    errors.foto = 'File size too big! (max: 200kb)';
+  }
   return errors;
 };
 

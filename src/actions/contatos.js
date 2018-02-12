@@ -1,19 +1,38 @@
-import uuid from 'uuid';
 import db from '../../db';
 
 export const startAddContato = (contatoData = {}) => (dispatch) => {
-  db
-    .table('contatos')
-    .add(contatoData)
-    .then((id) => {
-      dispatch({
-        type: 'ADD_CONTATO',
-        contato: {
-          id,
-          ...contatoData,
-        },
-      });
+  const readFile = (inputFile) => {
+    const reader = new FileReader();
+
+    return new Promise((resolve, reject) => {
+      reader.onerror = () => {
+        reader.abort();
+        reject();
+      };
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(inputFile);
     });
+  };
+
+  readFile(contatoData.foto).then((fotoBase64) => {
+    // envia os dados trocando a foto pela nova foto em base64
+    const newData = contatoData;
+    newData.foto = fotoBase64;
+    db
+      .table('contatos')
+      .add(contatoData)
+      .then((id) => {
+        dispatch({
+          type: 'ADD_CONTATO',
+          contato: {
+            id,
+            ...contatoData,
+          },
+        });
+      });
+  });
 };
 
 export const removeContatoAction = ({ id }) => ({
