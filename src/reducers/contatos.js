@@ -14,6 +14,8 @@ export default (state = [], action) => {
         }
         return contato;
       });
+    case 'LOAD_CONTATOS':
+      return action.contatos;
 
     default:
       return state;

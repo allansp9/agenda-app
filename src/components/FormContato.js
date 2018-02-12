@@ -21,12 +21,28 @@ const renderDropzoneInput = (field) => {
     <div>
       <Dropzone
         name={field.name}
-        onDrop={(filesToUpload, e) => field.input.onChange(filesToUpload)}
+        onDrop={(filesToUpload, e) => {
+          const reader = new FileReader();
+
+          reader.addEventListener(
+            'load',
+            () => {
+              const image = new Image();
+              image.height = 100;
+              image.title = filesToUpload[0].name;
+              image.src = reader.result;
+              // preview.appendChild( image );
+              field.input.onChange(image.src);
+            },
+            false,
+          );
+
+          reader.readAsDataURL(filesToUpload[0]);
+        }}
       >
         <div>Try dropping some files here, or click to select files to upload.</div>
       </Dropzone>
       {field.meta.error && <span className="error">{field.meta.error}</span>}
-      {!field.meta.error && files && <p>{files[0].name}</p>}
     </div>
   );
 };
@@ -48,9 +64,9 @@ const validate = (values) => {
   } else if (!isEmail(values.email)) {
     errors.email = 'Invalid Email';
   }
-  if (values.foto && values.foto[0].size > 200000) {
-    errors.foto = 'File size too big! (max: 200kb)';
-  }
+  // if (values.foto && values.foto[0].size > 200000) {
+  //   errors.foto = 'File size too big! (max: 200kb)';
+  // }
   return errors;
 };
 

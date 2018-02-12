@@ -8,13 +8,15 @@ import Header from './components/Header';
 import ListaContatos from './components/ListaContatos';
 import Dashboard from './components/Dashboard';
 import WrappedContactForm from './components/FormContato';
-import { addContato, removeContato, editContato } from './actions/contatos';
+import { addContato, removeContato, editContato, loadContatos } from './actions/contatos';
 import setTextFilter from './actions/filter';
 import getVisibleContatos from './selectors/contatos';
 import Footer from './components/Footer';
 import './styles/styles.scss';
 
 const store = configureStore();
+
+store.dispatch(loadContatos('LOAD_CONTATOS'));
 
 const jsx = (
   <Provider store={store}>

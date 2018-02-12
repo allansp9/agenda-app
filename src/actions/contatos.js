@@ -26,3 +26,14 @@ export const editContatoAction = (id, updates) => ({
   id,
   updates,
 });
+
+export const loadContatos = () => (dispatch) => {
+  db
+    .table('contatos')
+    .toArray()
+    .then(contatos =>
+      dispatch({
+        type: 'LOAD_CONTATOS',
+        contatos,
+      }));
+};

@@ -9,8 +9,8 @@ const ListaContatos = ({ contatos }) => (
 );
 
 const mapStateToProps = state => ({
-  contatos: selectContatos(state.contatos, state.form.busca.values.buscar),
-  // contatos: state.contatos,
+  // contatos: selectContatos(state.contatos, state.form.busca.values.buscar),
+  contatos: state.contatos,
   active: state.active,
 });
 
