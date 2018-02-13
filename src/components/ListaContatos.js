@@ -10,7 +10,6 @@ const ListaContatos = ({ contatos }) => (
 
 const mapStateToProps = state => ({
   contatos: selectContatos(state.contatos, state.filter.text),
-  // contatos: state.contatos,
   active: state.active,
 });
 

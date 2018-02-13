@@ -13,7 +13,7 @@ class Header extends React.Component {
       <div>
         <form />
         <input
-          name="buscar"
+          name="Pesquisar"
           onChange={this.changeHandler}
           type="text"
           placeholder="Pesquisar"
@@ -27,12 +27,5 @@ class Header extends React.Component {
 const mapStateToProps = state => ({
   filter: state.filter,
 });
-
-// const WrappedHeader = reduxForm({
-//   form: 'busca',
-//   initialValues: {
-//     buscar: '',
-//   },
-// })(Header);
 
 export default connect(mapStateToProps)(Header);

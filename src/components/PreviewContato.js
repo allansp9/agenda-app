@@ -1,30 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import setActive from '../actions/active';
+import encodeBase64 from '../selectors/encodeBase64';
 
-const PreviewContato = ({
-  id, nome, setActive, sobrenome, email, endereco, telefone, foto,
-}) => (
-  <button
-    href=""
-    onClick={() =>
-      setActive('info', {
-        id,
-        nome,
-        sobrenome,
-        email,
-        endereco,
-        telefone,
-        foto,
-      })
-    }
-  >
-    {nome}
-  </button>
-);
+class PreviewContato extends React.Component {
+  state = {
+    foto: '',
+  };
 
-const mapDispatchToProps = dispatch => ({
-  setActive: (active, dados) => dispatch(setActive(active, dados)),
-});
+  componentDidMount() {
+    encodeBase64(this.props.foto).then(data => this.setState({ foto: data }));
+  }
 
-export default connect(undefined, mapDispatchToProps)(PreviewContato);
+  render() {
+    return (
+      <div>
+        <img src={this.state.foto} alt="" />
+        <h3>{this.props.nome}</h3>
+      </div>
+    );
+  }
+}
+
+export default connect()(PreviewContato);
