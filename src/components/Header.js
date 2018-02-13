@@ -1,18 +1,38 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import setTextFilter from '../actions/filter';
 
-const Header = () => (
-  <div>
-    <form />
-    <Field name="buscar" component="input" type="text" placeholder="Pesquisar" />
-  </div>
-);
+class Header extends React.Component {
+  changeHandler = (e) => {
+    const text = e.target.value;
+    this.props.dispatch(setTextFilter(text));
+  };
 
-const WrappedHeader = reduxForm({
-  form: 'busca',
-  initialValues: {
-    buscar: '',
-  },
-})(Header);
+  render() {
+    return (
+      <div>
+        <form />
+        <input
+          name="buscar"
+          onChange={this.changeHandler}
+          type="text"
+          placeholder="Pesquisar"
+          value={this.props.filter.text}
+        />
+      </div>
+    );
+  }
+}
 
-export default WrappedHeader;
+const mapStateToProps = state => ({
+  filter: state.filter,
+});
+
+// const WrappedHeader = reduxForm({
+//   form: 'busca',
+//   initialValues: {
+//     buscar: '',
+//   },
+// })(Header);
+
+export default connect(mapStateToProps)(Header);

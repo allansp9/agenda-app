@@ -12,7 +12,6 @@ const deletarContato = (props) => {
 const editarContato = (props) => {
   props.setActive('info', props.data);
   props.editContato(props.data.id, props.data);
-  console.log(props);
 };
 
 const EditContato = props => (

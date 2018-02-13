@@ -9,7 +9,6 @@ import Header from './Header';
 
 const Dashboard = ({ activePage }) => (
   <div>
-    <Header />
     <ListaContatos />
     {activePage === 'info' && <InfoContato />}
     {activePage === 'add' && <AddContato />}

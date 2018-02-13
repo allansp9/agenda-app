@@ -22,25 +22,12 @@ const renderDropzoneInput = (field) => {
       <Dropzone
         name={field.name}
         onDrop={(filesToUpload, e) => {
-          const reader = new FileReader();
-
-          reader.addEventListener(
-            'load',
-            () => {
-              const image = new Image();
-              image.height = 100;
-              image.title = filesToUpload[0].name;
-              image.src = reader.result;
-              field.input.onChange(filesToUpload[0]);
-            },
-            false,
-          );
-          reader.readAsDataURL(filesToUpload[0]);
+          field.input.onChange(filesToUpload[0]);
         }}
       >
         <div>Try dropping some files here, or click to select files to upload.</div>
       </Dropzone>
-      {field.meta.error && <span className="error">{field.meta.error}</span>}
+      {field.meta.touched && field.meta.error && <span className="error">{field.meta.error}</span>}
     </div>
   );
 };
@@ -62,7 +49,9 @@ const validate = (values) => {
   } else if (!isEmail(values.email)) {
     errors.email = 'Invalid Email';
   }
-  if (values.foto && values.foto.size > 200000) {
+  if (!values.foto) {
+    errors.foto = 'Required';
+  } else if (values.foto && values.foto.size > 200000) {
     errors.foto = 'File size too big! (max: 200kb)';
   }
   return errors;
@@ -89,12 +78,6 @@ const ContactForm = ({ handleSubmit, onSubmit }) => (
     <button type="submit">Submit</button>
   </form>
 );
-
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: (values) => {
-//     dispatch(addContato(values));
-//   },
-// });
 
 const mapStateToProps = state => ({
   contatos: state.contatos,
