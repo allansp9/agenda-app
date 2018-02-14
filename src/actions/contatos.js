@@ -28,10 +28,13 @@ export const editContatoAction = (id, updates) => (dispatch) => {
     .then(() => {
       dispatch({
         type: 'EDIT_CONTATO',
-        contato: {
-          id,
-          updates,
-        },
+        id,
+        updates,
+      });
+      dispatch({
+        type: 'SET_ACTIVE',
+        activePage: 'info',
+        activeUser: id,
       });
     });
 };
