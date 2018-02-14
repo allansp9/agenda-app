@@ -21,10 +21,22 @@ export const startAddContato = contatoData => (dispatch) => {
     });
 };
 
-export const removeContatoAction = ({ id }) => ({
-  type: 'REMOVE_CONTATO',
-  id,
-});
+export const removeContatoAction = id => (dispatch) => {
+  db
+    .table('contatos')
+    .delete(id)
+    .then(() => {
+      dispatch({
+        type: 'REMOVE_CONTATO',
+        id,
+      });
+      dispatch({
+        type: 'SET_ACTIVE',
+        activePage: '',
+        activeUser: '',
+      });
+    });
+};
 
 export const editContatoAction = (id, updates) => (dispatch) => {
   db
