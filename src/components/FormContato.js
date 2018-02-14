@@ -79,9 +79,9 @@ const ContactForm = ({ handleSubmit, onSubmit }) => (
   </form>
 );
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   contatos: state.contatos,
-  initialValues: state.active.activeUser,
+  initialValues: props.contato || {},
 });
 
 const WrappedContactForm = reduxForm({

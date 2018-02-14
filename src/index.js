@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
-import { loadContatos } from './actions/contatos';
+import { loadContatos, editContatoAction } from './actions/contatos';
 import App from './components/App';
 
 import './styles/styles.scss';

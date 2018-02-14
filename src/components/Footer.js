@@ -4,12 +4,12 @@ import setActive from '../actions/active';
 
 const Footer = props => (
   <div>
-    <button onClick={props.setActive}>Novo</button>
+    <button onClick={() => props.dispatch(setActive('add'))}>Novo</button>
   </div>
 );
 
-const mapDispatchToProps = dispatch => ({
-  setActive: () => dispatch(setActive('add')),
-});
+// const mapDispatchToProps = dispatch => ({
+//   setActive: () => dispatch(setActive('add')),
+// });
 
-export default connect(undefined, mapDispatchToProps)(Footer);
+export default connect()(Footer);

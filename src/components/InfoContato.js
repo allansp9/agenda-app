@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import setActive from '../actions/active';
 import encodeBase64 from '../selectors/encodeBase64';
 
-// <img src={contato.foto} alt="avatar" />
 class InfoContato extends Component {
   constructor(props) {
     super(props);
@@ -12,9 +11,7 @@ class InfoContato extends Component {
     };
   }
 
-  setActive;
-
-  componentWillMount() {
+  componentDidMount() {
     encodeBase64(this.props.contato.foto).then(data => this.setState({ foto: data }));
   }
 
@@ -28,21 +25,10 @@ class InfoContato extends Component {
         <h3>{contato.email}</h3>
         <h3>{contato.endereco}</h3>
         <h3>{contato.telefone}</h3>
-        <button onClick={() => this.props.dispatch(setActive('edit', { ...contato }))}>
-          Editar
-        </button>
+        <button onClick={() => this.props.dispatch(setActive('edit', contato.id))}>Editar</button>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  contato: state.active.activeUser,
-  active: state.active.activePage,
-});
-
-// const mapDispatchToProps = dispatch => ({
-//   setActive: (activePage, activeUser) => dispatch(setActive(activePage, activeUser)),
-// });
-
-export default connect(mapStateToProps)(InfoContato);
+export default connect()(InfoContato);

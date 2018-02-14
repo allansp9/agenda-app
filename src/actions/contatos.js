@@ -1,4 +1,5 @@
 import db from '../../db';
+import setActive from './active';
 
 export const startAddContato = contatoData => (dispatch) => {
   db
@@ -20,7 +21,7 @@ export const removeContatoAction = ({ id }) => ({
   id,
 });
 
-export const editContatoAction = (id, updates) => dispatch =>
+export const editContatoAction = (id, updates) => (dispatch) => {
   db
     .table('contatos')
     .update(id, updates)
@@ -33,6 +34,7 @@ export const editContatoAction = (id, updates) => dispatch =>
         },
       });
     });
+};
 
 export const loadContatos = () => (dispatch) => {
   db

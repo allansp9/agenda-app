@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PreviewContato from './PreviewContato';
-import selectContatos from '../selectors/contatos';
+import { selectContatos } from '../selectors/contatos';
 import setActive from '../actions/active';
 
 const ListaContatos = ({ contatos }) => (
@@ -10,7 +10,6 @@ const ListaContatos = ({ contatos }) => (
 
 const mapStateToProps = state => ({
   contatos: selectContatos(state.contatos, state.filter.text),
-  active: state.active,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setActive from '../actions/active';
 import encodeBase64 from '../selectors/encodeBase64';
+import setActive from '../actions/active';
 
 class PreviewContato extends React.Component {
   state = {
@@ -9,14 +9,16 @@ class PreviewContato extends React.Component {
   };
 
   componentDidMount() {
-    encodeBase64(this.props.foto).then(data => this.setState({ foto: data }));
+    encodeBase64(this.props.foto).then(data => this.setState(() => ({ foto: data })));
   }
 
   render() {
+    const { ...contato } = this.props;
     return (
       <div>
         <img src={this.state.foto} alt="" />
-        <h3>{this.props.nome}</h3>
+        <h3>{contato.nome}</h3>
+        <button onClick={() => contato.dispatch(setActive('info', contato.id))}> Info </button>
       </div>
     );
   }

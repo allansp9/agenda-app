@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InfoContato from './InfoContato';
-import ListaContatos from './ListaContatos';
 import AddContato from './AddContato';
 import EditContato from './EditContato';
-import Footer from './Footer';
-import Header from './Header';
+import { selectActiveUser } from '../selectors/contatos';
 
-const Dashboard = ({ activePage }) => (
+const Dashboard = ({ activePage, activeUser, contato }) => (
   <div>
-    <ListaContatos />
-    {activePage === 'info' && <InfoContato />}
+    {activePage === 'info' && <InfoContato contato={contato} />}
     {activePage === 'add' && <AddContato />}
-    {activePage === 'edit' && <EditContato />}
-    <Footer />
+    {activePage === 'edit' && <EditContato contato={contato} />}
   </div>
 );
 
 const mapStateToProps = state => ({
+  contato: selectActiveUser(state.active.activeUser, state.contatos)[0],
   activePage: state.active.activePage,
+  activeUser: state.active.activeUser,
 });
 
 export default connect(mapStateToProps)(Dashboard);
