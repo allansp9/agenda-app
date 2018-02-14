@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import FormContato from './FormContato';
 import { startAddContato } from '../actions/contatos';
-import setActiveAction from '../actions/active';
 
 const adicionarContato = (props) => {
   props.dispatch(startAddContato(props.data));
@@ -13,7 +12,7 @@ const adicionarContato = (props) => {
 const AddContato = props => (
   <div>
     <h1>Adicionando</h1>
-    <FormContato onSubmit={data => adicionarContato({ ...props, data })} />
+    <FormContato onSubmit={data => props.dispatch(startAddContato(data))} />
   </div>
 );
 

@@ -13,6 +13,11 @@ export const startAddContato = contatoData => (dispatch) => {
           ...contatoData,
         },
       });
+      dispatch({
+        type: 'SET_ACTIVE',
+        activePage: 'info',
+        activeUser: id,
+      });
     });
 };
 
