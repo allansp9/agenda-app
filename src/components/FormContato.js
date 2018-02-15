@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, change } from 'redux-form';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import isEmail from 'sane-email-validation';
@@ -16,22 +16,19 @@ const renderInput = ({ input, meta, label }) => (
   </div>
 );
 
-const renderDropzoneInput = (field) => {
-  const files = field.input.value;
-  return (
-    <div>
-      <Dropzone
-        name={field.name}
-        onDrop={(filesToUpload, e) => {
-          field.input.onChange(filesToUpload[0]);
-        }}
-      >
-        <div>Try dropping some files here, or click to select files to upload.</div>
-      </Dropzone>
-      {field.meta.touched && field.meta.error && <span className="error">{field.meta.error}</span>}
-    </div>
-  );
-};
+const renderDropzoneInput = ({ input, meta, label }) => (
+  <div>
+    <Dropzone
+      name={label}
+      onDrop={(filesToUpload, e) => {
+        input.onChange(filesToUpload[0]);
+      }}
+    >
+      <div>Try dropping some files here, or click to select files to upload.</div>
+    </Dropzone>
+    {meta.dirty && meta.error && <span className="error">{meta.error}</span>}
+  </div>
+);
 
 const validate = (values) => {
   const errors = {};
@@ -71,7 +68,9 @@ class ContactForm extends Component {
   };
 
   render() {
-    const { handleSubmit, onSubmit, formHandler } = this.props;
+    const {
+      handleSubmit, onSubmit, formHandler, change,
+    } = this.props;
     return (
       <form onSubmit={handleSubmit(this.mySubmit)}>
         <Field name="nome" label="Nome" component={renderInput} />
@@ -93,6 +92,9 @@ class ContactForm extends Component {
           <label htmlFor="foto">
             Foto
             <Field name="foto" component={renderDropzoneInput} />
+            <button onClick={() => change('foto', '')} type="button">
+              Limpa
+            </button>
           </label>
         </div>
         <button type="submit">Submit</button>
