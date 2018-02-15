@@ -1,9 +1,10 @@
 .header {
+  align-items: center;
   background: red;
   display: flex;
-  align-items: center;
   height: $l-size;
-  //   padding: $s-size;
+  margin-bottom: $m-size;
+
   width: 100vw;
 
   @media (min-width: $desktop-breakpoint) {

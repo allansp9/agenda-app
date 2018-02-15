@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  outline: none;
 }
 
 html {
@@ -19,6 +20,18 @@ button {
 
 button:disabled {
   cursor: default;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.contatos-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .is-active {

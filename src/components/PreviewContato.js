@@ -10,13 +10,19 @@ class PreviewContato extends React.Component {
   render() {
     const { ...contato } = this.props;
     return (
-      <div>
+      <div
+        onClick={() => contato.dispatch(setActive('info', contato.id))}
+        role="button"
+        tabIndex={contato.id}
+        onKeyUp={() => contato.dispatch(setActive('info', contato.id))}
+        className="lista-contatos__item"
+      >
         <img
           src={!this.props.foto ? require('../../public/images/placeholder.png') : this.props.foto}
           alt=""
         />
         <h3>{contato.nome}</h3>
-        <button onClick={() => contato.dispatch(setActive('info', contato.id))}> Info </button>
+        <h3>{contato.email}</h3>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectContatos, selectActiveUser } from '../selectors/contatos';
 import Dashboard from './Dashboard';
-import Header from './Header';
+import Busca from './Busca';
 import ListaContatos from './ListaContatos';
 import PreviewContato from './PreviewContato';
 import InfoContato from './InfoContato';
@@ -11,16 +11,18 @@ import EditContato from './EditContato';
 import Footer from './Footer';
 
 const App = ({ activePage, contatos, contatoVisivel }) => (
-  <div>
-    <Header />
-    <ListaContatos>
-      {contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}
-    </ListaContatos>
-    <Dashboard>
-      {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
-      {activePage === 'add' && <AddContato />}
-      {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
-    </Dashboard>
+  <div className="content-container">
+    <div className="contatos-wrapper">
+      <ListaContatos>
+        <Busca />
+        {contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}
+      </ListaContatos>
+      <Dashboard>
+        {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
+        {activePage === 'add' && <AddContato />}
+        {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
+      </Dashboard>
+    </div>
     <Footer />
   </div>
 );

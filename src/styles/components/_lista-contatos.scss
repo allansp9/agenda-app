@@ -1,0 +1,23 @@
+.lista-contatos {
+  flex: 1;
+  margin-top: $m-size;
+}
+
+.lista-contatos__item {
+  align-items: center;
+  border-bottom: 2px solid $off-white;
+  display: flex;
+  padding: $xs-size;
+
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    background: $off-white;
+    cursor: pointer;
+  }
+}
