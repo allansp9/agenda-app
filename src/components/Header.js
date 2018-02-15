@@ -10,7 +10,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="header">
         <form />
         <input
           name="Pesquisar"
@@ -18,6 +18,7 @@ class Header extends React.Component {
           type="text"
           placeholder="Pesquisar"
           value={this.props.filter.text}
+          className="header__input"
         />
       </div>
     );

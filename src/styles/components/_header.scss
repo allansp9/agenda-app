@@ -1,18 +1,20 @@
 .header {
-  background: $dark-blue;
-}
-
-.header__content {
-  align-items: center;
+  background: red;
   display: flex;
-  justify-content: space-between;
-  padding: $s-size 0;
-}
+  align-items: center;
+  height: $l-size;
+  //   padding: $s-size;
+  width: 100vw;
 
-.header__title {
-  color: white;
-  text-decoration: none;
-  h1 {
-    margin: 0;
+  @media (min-width: $desktop-breakpoint) {
+    height: $xl-size;
+  }
+
+  .header__input {
+    border: none;
+    font-size: $font-size-large;
+    height: inherit;
+    outline: none;
+    padding-left: 0.6rem;
   }
 }
