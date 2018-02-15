@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import isEmail from 'sane-email-validation';
 import { normalizePhone } from '../selectors/normalizeForm';
+import encodeBase64 from '../selectors/encodeBase64';
 
 const renderInput = ({ input, meta, label }) => (
   <div>
@@ -57,27 +58,49 @@ const validate = (values) => {
   return errors;
 };
 
-const ContactForm = ({ handleSubmit, onSubmit }) => (
-  <form onSubmit={handleSubmit}>
-    <Field name="nome" label="Nome" component={renderInput} />
+class ContactForm extends Component {
+  mySubmit = (values, formHandler) => {
+    if (values.foto instanceof Blob) {
+      encodeBase64(values.foto).then((data) => {
+        const newValues = values;
+        newValues.foto = data;
+        this.props.formHandler(newValues);
+      });
+    } else {
+      this.props.formHandler(values);
+    }
+  };
 
-    <Field name="sobrenome" label="Sobrenome" component={renderInput} />
+  render() {
+    const { handleSubmit, onSubmit, formHandler } = this.props;
+    return (
+      <form onSubmit={handleSubmit(this.mySubmit)}>
+        <Field name="nome" label="Nome" component={renderInput} />
 
-    <Field name="email" label="email" component={renderInput} />
+        <Field name="sobrenome" label="Sobrenome" component={renderInput} />
 
-    <Field name="endereco" label="Endereco" component={renderInput} />
+        <Field name="email" label="email" component={renderInput} />
 
-    <Field name="telefone" label="Telefone" component={renderInput} normalize={normalizePhone} />
+        <Field name="endereco" label="Endereco" component={renderInput} />
 
-    <div>
-      <label htmlFor="foto">
-        Foto
-        <Field name="foto" component={renderDropzoneInput} />
-      </label>
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-);
+        <Field
+          name="telefone"
+          label="Telefone"
+          component={renderInput}
+          normalize={normalizePhone}
+        />
+
+        <div>
+          <label htmlFor="foto">
+            Foto
+            <Field name="foto" component={renderDropzoneInput} />
+          </label>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    );
+  }
+}
 
 const mapStateToProps = (state, props) => ({
   contatos: state.contatos,

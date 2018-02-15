@@ -12,7 +12,7 @@ const adicionarContato = (props) => {
 const AddContato = props => (
   <div>
     <h1>Adicionando</h1>
-    <FormContato onSubmit={data => props.dispatch(startAddContato(data))} />
+    <FormContato formHandler={data => props.dispatch(startAddContato(data))} />
   </div>
 );
 

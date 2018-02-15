@@ -1,25 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectContatos } from '../selectors/contatos';
+import { selectContatos, selectActiveUser } from '../selectors/contatos';
 import Dashboard from './Dashboard';
 import Header from './Header';
 import ListaContatos from './ListaContatos';
 import PreviewContato from './PreviewContato';
+import InfoContato from './InfoContato';
+import AddContato from './AddContato';
+import EditContato from './EditContato';
 import Footer from './Footer';
 
-const App = ({ contatos }) => (
+const App = ({ activePage, contatos, contatoVisivel }) => (
   <div>
     <Header />
     <ListaContatos>
       {contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}
     </ListaContatos>
-    <Dashboard />
+    <Dashboard>
+      {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
+      {activePage === 'add' && <AddContato />}
+      {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
+    </Dashboard>
     <Footer />
   </div>
 );
 
-const mapStateToProps = state => ({
-  contatos: selectContatos(state.contatos, state.filter.text),
-});
+const mapStateToProps = (state) => {
+  const { activeUser, activePage } = state.active;
+  return {
+    contatos: selectContatos(state.contatos, state.filter.text),
+    contatoVisivel: selectActiveUser(activeUser, state.contatos)[0],
+    activePage,
+  };
+};
 
 export default connect(mapStateToProps)(App);

@@ -3,7 +3,7 @@ export default (inputFile) => {
 
   return new Promise((resolve, reject) => {
     reader.onerror = () => {
-      reject();
+      reject(inputFile);
     };
     reader.onload = () => {
       resolve(reader.result);

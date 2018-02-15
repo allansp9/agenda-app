@@ -9,7 +9,7 @@ const EditContato = props => (
     <h1>Editano</h1>
     <FormContato
       contato={props.contato}
-      onSubmit={updates => props.dispatch(editContatoAction(props.contato.id, updates))}
+      formHandler={data => props.dispatch(editContatoAction(data, props.contato.id))}
     />
     <button>Deletar</button>
   </div>

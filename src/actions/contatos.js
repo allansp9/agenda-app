@@ -1,5 +1,6 @@
 import db from '../../db';
 import setActive from './active';
+import encodeBase64 from '../selectors/encodeBase64';
 
 export const startAddContato = contatoData => (dispatch) => {
   db
@@ -38,15 +39,15 @@ export const removeContatoAction = id => (dispatch) => {
     });
 };
 
-export const editContatoAction = (id, updates) => (dispatch) => {
+export const editContatoAction = (updates, id) => (dispatch) => {
   db
     .table('contatos')
     .update(id, updates)
     .then(() => {
       dispatch({
         type: 'EDIT_CONTATO',
-        id,
         updates,
+        id,
       });
       dispatch({
         type: 'SET_ACTIVE',
@@ -60,9 +61,10 @@ export const loadContatos = () => (dispatch) => {
   db
     .table('contatos')
     .toArray()
-    .then(contatos =>
+    .then((contatos) => {
       dispatch({
         type: 'LOAD_CONTATOS',
         contatos,
-      }));
+      });
+    });
 };

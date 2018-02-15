@@ -8,15 +8,15 @@ class PreviewContato extends React.Component {
     foto: '',
   };
 
-  componentDidMount() {
-    encodeBase64(this.props.foto).then(data => this.setState(() => ({ foto: data })));
-  }
+  // componentDidMount() {
+  //   encodeBase64(this.props.foto).then(data => this.setState(() => ({ foto: data })));
+  // }
 
   render() {
     const { ...contato } = this.props;
     return (
       <div>
-        <img src={this.state.foto} alt="" />
+        <img src={this.props.foto} alt="" />
         <h3>{contato.nome}</h3>
         <button onClick={() => contato.dispatch(setActive('info', contato.id))}> Info </button>
       </div>

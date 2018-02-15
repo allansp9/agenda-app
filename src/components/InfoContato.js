@@ -17,18 +17,18 @@ class InfoContato extends Component {
     };
   }
 
-  componentDidMount() {
-    encodeBase64(this.props.contato.foto).then(data => this.setState({ foto: data }));
-  }
+  // componentDidMount() {
+  //   encodeBase64(this.props.contato.foto).then(data => this.setState({ foto: data }));
+  // }
 
   render() {
     const { contato, dispatch } = this.props;
     const {
-      nome, sobrenome, email, telefone, endereco, foto,
+      nome, sobrenome, email, telefone, endereco,
     } = this.state;
     return (
       <div>
-        <img src={foto} alt="Profile" />
+        <img src={contato.foto} alt="Profile" />
         <h1>{nome}</h1>
         <h3>{sobrenome}</h3>
         <h3>{email}</h3>
