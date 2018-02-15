@@ -28,13 +28,13 @@ export const removeContatoAction = id => (dispatch) => {
     .delete(id)
     .then(() => {
       dispatch({
-        type: 'REMOVE_CONTATO',
-        id,
-      });
-      dispatch({
         type: 'SET_ACTIVE',
         activePage: '',
         activeUser: '',
+      });
+      dispatch({
+        type: 'REMOVE_CONTATO',
+        id,
       });
     });
 };

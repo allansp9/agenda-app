@@ -50,9 +50,8 @@ const validate = (values) => {
   } else if (!isEmail(values.email)) {
     errors.email = 'Invalid Email';
   }
-  if (!values.foto) {
-    errors.foto = 'Required';
-  } else if (values.foto && values.foto.size > 200000) {
+
+  if (values.foto && values.foto.size > 200000) {
     errors.foto = 'File size too big! (max: 200kb)';
   }
   return errors;

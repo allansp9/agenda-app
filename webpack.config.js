@@ -1,13 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
+const dotenv = require('dotenv');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 if (process.env.NODE_ENV === 'test') {
-  require('dotenv').config({ path: '.env.test' });
+  dotenv.config({ path: '.env.test' });
 } else if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config({ path: '.env.development' });
+  dotenv.config({ path: '.env.development' });
 }
 
 module.exports = (env) => {
@@ -26,6 +27,18 @@ module.exports = (env) => {
           loader: 'babel-loader',
           test: /\.js$/,
           exclude: /node_modules/,
+        },
+        {
+          test: /\.(png|jp(e*)g|svg)$/,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 8192,
+                name: 'images/[hash]-[name].[ext]',
+              },
+            },
+          ],
         },
         {
           test: /\.s?css$/,

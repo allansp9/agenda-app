@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import encodeBase64 from '../selectors/encodeBase64';
 import setActive from '../actions/active';
 
 class PreviewContato extends React.Component {
@@ -8,15 +7,14 @@ class PreviewContato extends React.Component {
     foto: '',
   };
 
-  // componentDidMount() {
-  //   encodeBase64(this.props.foto).then(data => this.setState(() => ({ foto: data })));
-  // }
-
   render() {
     const { ...contato } = this.props;
     return (
       <div>
-        <img src={this.props.foto} alt="" />
+        <img
+          src={!this.props.foto ? require('../../public/images/placeholder.png') : this.props.foto}
+          alt=""
+        />
         <h3>{contato.nome}</h3>
         <button onClick={() => contato.dispatch(setActive('info', contato.id))}> Info </button>
       </div>
