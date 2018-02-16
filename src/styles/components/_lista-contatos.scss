@@ -21,19 +21,33 @@
   align-items: center;
   border-bottom: 1px solid darken($off-white, 7%);
   display: flex;
-  // padding: $xs-size;
+  padding: $m-size;
   transition: background 0.3s ease;
-
-  img {
-    border-radius: 50%;
-    height: 50px;
-    margin-right: $s-size;
-    object-fit: cover;
-    width: 50px;
-  }
 
   &:hover {
     background: $off-white;
     cursor: pointer;
   }
+}
+
+.lista-contatos__foto {
+  height: 50px;
+  margin-right: $s-size;
+  width: 50px;
+
+  img {
+    height: inherit;
+    width: inherit;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.lista-contatos__nome {
+  font-weight: bold;
+}
+
+.lista-contatos__email {
+  font-style: italic;
+  font-weight: 100;
 }

@@ -17,12 +17,22 @@ class PreviewContato extends React.Component {
         onKeyUp={() => contato.dispatch(setActive('info', contato.id))}
         className="lista-contatos__item"
       >
-        <img
-          src={!this.props.foto ? require('../../public/images/placeholder.png') : this.props.foto}
-          alt=""
-        />
-        <h3>{contato.nome}</h3>
-        <h3>{contato.email}</h3>
+        <div className="lista-contatos__foto">
+          <img
+            src={
+              !this.props.foto ? require('../../public/images/placeholder.png') : this.props.foto
+            }
+            alt={contato.nome}
+          />
+        </div>
+        <div>
+          <div>
+            <span className="lista-contatos__nome">{contato.nome}</span>
+          </div>
+          <div>
+            <span className="lista-contatos__email">{contato.email}</span>
+          </div>
+        </div>
       </div>
     );
   }
