@@ -1,0 +1,19 @@
+.botao {
+  cursor: pointer;
+}
+
+.botao--novo-contato {
+  background: lighten($color: $grey, $amount: 40);
+  border: none;
+  font-size: $font-size-large;
+  height: 100%;
+  transition: background 0.3s ease;
+  width: 100%;
+
+  &:hover {
+    background: lighten($grey, 30);
+  }
+  &:active {
+    background: lighten($grey, 20);
+  }
+}

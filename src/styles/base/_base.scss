@@ -14,14 +14,6 @@ body {
   line-height: 1.6;
 }
 
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: default;
-}
-
 .content-container {
   display: flex;
 }
@@ -31,7 +23,7 @@ button:disabled {
 }
 
 .painel {
-  display: none;
+  // display: none;
 }
 
 .sidebar {
