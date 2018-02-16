@@ -1,3 +1,10 @@
 .novo-contato {
-  height: 100px;
+  height: $xl-size;
+}
+
+.novo-contato__botao {
+  border: none;
+  height: 100%;
+  outline: none;
+  width: 100%;
 }
