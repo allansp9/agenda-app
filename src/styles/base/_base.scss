@@ -34,5 +34,5 @@ button:disabled {
 }
 
 .is-active {
-  font-weight: bold;
+  background: darken($off-white, 10%);
 }
