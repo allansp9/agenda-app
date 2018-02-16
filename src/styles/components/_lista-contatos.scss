@@ -1,16 +1,18 @@
 .lista-contatos {
-  border-right: 2px solid $off-white;
   display: flex;
-  flex: 0.6;
+  flex: 1;
   flex-flow: column;
-  padding-top: $m-size;
 }
 
 .lista-contatos__pesquisa {
-  padding: $xs-size;
   border-bottom: 2px solid $off-white;
+  box-shadow: 0px 1px 1px lighten($color: #000000, $amount: 80);
+  height: 50px;
+
   input {
-    height: 30px;
+    border: none;
+    height: 100%;
+    padding-left: $s-size;
     width: 100%;
   }
 }
@@ -19,7 +21,7 @@
   align-items: center;
   border-bottom: 1px solid darken($off-white, 7%);
   display: flex;
-  padding: $xs-size;
+  // padding: $xs-size;
   transition: background 0.3s ease;
 
   img {
