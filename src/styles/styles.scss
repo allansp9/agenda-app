@@ -1,8 +1,8 @@
 @import "./base/settings";
 @import "./base/base";
-@import "./base/aside";
-@import "./base/sidebar";
+@import "./components/aside";
+@import "./components/sidebar";
 @import "./components/lista-contatos";
 @import "./components/visibility";
 @import "./components/botao";
-@import "./components/novo-contato";
+@import "./components/form-contato";

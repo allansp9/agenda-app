@@ -2,13 +2,16 @@
   cursor: pointer;
 }
 
-.botao--novo-contato {
-  background: lighten($color: $grey, $amount: 40);
+.botao--grande {
   border: none;
   font-size: $font-size-large;
-  height: 100%;
-  transition: background 0.3s ease;
+  height: $xl-size;
   width: 100%;
+}
+
+.botao--novo-contato {
+  background: lighten($color: $grey, $amount: 40);
+  transition: background 0.3s ease;
 
   &:hover {
     background: lighten($grey, 30);

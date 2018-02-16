@@ -9,14 +9,15 @@ import encodeBase64 from '../selectors/encodeBase64';
 const renderInput = ({ input, meta, label }) => (
   <div>
     <label htmlFor={label}>
-      {label}
-      <input {...input} />
+      <input {...input} placeholder={label} />
     </label>
     {meta.touched && meta.error && <span className="error">{meta.error}</span>}
   </div>
 );
 
-const renderDropzoneInput = ({ input, meta, label }) => (
+const renderDropzoneInput = ({
+  input, meta, label, change,
+}) => (
   <div>
     <Dropzone
       name={label}
@@ -27,6 +28,11 @@ const renderDropzoneInput = ({ input, meta, label }) => (
       <div>Try dropping some files here, or click to select files to upload.</div>
     </Dropzone>
     {meta.dirty && meta.error && <span className="error">{meta.error}</span>}
+    {input.value && (
+      <button onClick={() => input.onChange('')} type="button">
+        Remover foto
+      </button>
+    )}
   </div>
 );
 
@@ -73,6 +79,8 @@ class ContactForm extends Component {
     } = this.props;
     return (
       <form onSubmit={handleSubmit(this.mySubmit)}>
+        <Field name="foto" label="Foto" component={renderDropzoneInput} />
+
         <Field name="nome" label="Nome" component={renderInput} />
 
         <Field name="sobrenome" label="Sobrenome" component={renderInput} />
@@ -88,15 +96,6 @@ class ContactForm extends Component {
           normalize={normalizePhone}
         />
 
-        <div>
-          <label htmlFor="foto">
-            Foto
-            <Field name="foto" component={renderDropzoneInput} />
-            <button onClick={() => change('foto', '')} type="button">
-              Limpa
-            </button>
-          </label>
-        </div>
         <button type="submit">Submit</button>
       </form>
     );
