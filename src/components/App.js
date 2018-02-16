@@ -7,9 +7,10 @@ import InfoContato from './InfoContato';
 import AddContato from './AddContato';
 import EditContato from './EditContato';
 import NovoContato from './NovoContato';
+import Aside from './Aside';
 
 const App = ({ activePage, contatos, contatoVisivel }) => (
-  <div className="content-container">
+  <div>
     <div className="sidebar">
       <Busca />
       <div className="lista-contatos">
@@ -17,11 +18,13 @@ const App = ({ activePage, contatos, contatoVisivel }) => (
       </div>
       <NovoContato />
     </div>
-    <div className="painel">
-      {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
-      {activePage === 'add' && <AddContato />}
-      {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
-    </div>
+    {activePage !== '' && (
+      <Aside>
+        {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
+        {activePage === 'add' && <AddContato />}
+        {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
+      </Aside>
+    )}
   </div>
 );
 
