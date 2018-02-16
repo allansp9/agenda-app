@@ -1,19 +1,33 @@
 .lista-contatos {
-  flex: 1;
-  margin-top: $m-size;
+  border-right: 2px solid $off-white;
+  display: flex;
+  flex: 0.6;
+  flex-flow: column;
+  padding-top: $m-size;
+}
+
+.lista-contatos__pesquisa {
+  padding: $xs-size;
+  border-bottom: 2px solid $off-white;
+  input {
+    height: 30px;
+    width: 100%;
+  }
 }
 
 .lista-contatos__item {
   align-items: center;
-  border-bottom: 2px solid $off-white;
+  border-bottom: 1px solid darken($off-white, 7%);
   display: flex;
   padding: $xs-size;
+  transition: background 0.3s ease;
 
   img {
-    height: 50px;
-    width: 50px;
     border-radius: 50%;
+    height: 50px;
+    margin-right: $s-size;
     object-fit: cover;
+    width: 50px;
   }
 
   &:hover {

@@ -10,7 +10,7 @@ class Busca extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="lista-contatos__pesquisa">
         <form />
         <input
           name="Pesquisar"
