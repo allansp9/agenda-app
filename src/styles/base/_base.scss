@@ -24,15 +24,20 @@ button:disabled {
 
 .content-container {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.contatos-wrapper {
-  display: flex;
-  flex: 1;
 }
 
 .is-active {
   background: darken($off-white, 10%);
+}
+
+.painel {
+  display: none;
+}
+
+.sidebar {
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+  justify-content: space-between;
 }

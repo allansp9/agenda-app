@@ -1,29 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectContatos, selectActiveUser } from '../selectors/contatos';
-import Dashboard from './Dashboard';
 import Busca from './Busca';
-import ListaContatos from './ListaContatos';
 import PreviewContato from './PreviewContato';
 import InfoContato from './InfoContato';
 import AddContato from './AddContato';
 import EditContato from './EditContato';
-import Footer from './Footer';
+import NovoContato from './NovoContato';
 
 const App = ({ activePage, contatos, contatoVisivel }) => (
   <div className="content-container">
-    <div className="contatos-wrapper">
-      <ListaContatos>
-        <Busca />
+    <div className="sidebar">
+      <Busca />
+      <div className="lista-contatos">
         {contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}
-      </ListaContatos>
-      <Dashboard>
-        {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
-        {activePage === 'add' && <AddContato />}
-        {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
-      </Dashboard>
+      </div>
+      <NovoContato />
     </div>
-    <Footer />
+    <div className="painel">
+      {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
+      {activePage === 'add' && <AddContato />}
+      {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
+    </div>
   </div>
 );
 
