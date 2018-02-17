@@ -4,10 +4,7 @@ import setActive from '../actions/active';
 
 const NovoContato = props => (
   <div>
-    <button
-      onClick={() => props.dispatch(setActive('add'))}
-      className="botao--grande botao--novo-contato"
-    >
+    <button onClick={() => props.dispatch(setActive('add'))} className="botao--grande">
       Adicionar Contato
     </button>
   </div>

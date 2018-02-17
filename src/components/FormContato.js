@@ -7,7 +7,7 @@ import { normalizePhone } from '../selectors/normalizeForm';
 import encodeBase64 from '../selectors/encodeBase64';
 
 const renderInput = ({ input, meta, label }) => (
-  <div className="form-contato__campo">
+  <div className="form__field">
     <label htmlFor={label}>
       <input {...input} placeholder={label} />
     </label>
@@ -18,10 +18,10 @@ const renderInput = ({ input, meta, label }) => (
 const renderDropzoneInput = ({
   input, meta, label, change,
 }) => (
-  <div>
+  <div className="form__file">
     <Dropzone
       name={label}
-      className="form-contato__file"
+      className="form__foto"
       onDrop={(filesToUpload, e) => {
         input.onChange(filesToUpload[0]);
       }}
@@ -32,12 +32,18 @@ const renderDropzoneInput = ({
           <img src={input.value.preview} alt="preview" className="avatar avatar--grande" />
         )}
     </Dropzone>
-    {meta.dirty && meta.error && <span className="error">{meta.error}</span>}
-    {input.value && (
-      <button onClick={() => input.onChange('')} type="button">
-        Remover foto
-      </button>
-    )}
+    <div className="form__file__desc">
+      <p>Tamanho máximo: 200kb</p>
+      <p>Apenas JPG ou PNG</p>
+      {meta.dirty && meta.error && <span className="error">{meta.error}</span>}
+      <div>
+        {input.value && (
+          <button onClick={() => input.onChange('')} type="button" className="botao--pequeno">
+            Remover arquivo
+          </button>
+        )}
+      </div>
+    </div>
   </div>
 );
 
@@ -56,11 +62,13 @@ const validate = (values) => {
   if (!values.email) {
     errors.email = 'Required';
   } else if (!isEmail(values.email)) {
-    errors.email = 'Invalid Email';
+    errors.email = 'Email inválido';
   }
 
-  if (values.foto && values.foto.size > 200000) {
-    errors.foto = 'File size too big! (max: 200kb)';
+  if (values.foto && !['image/jpeg', 'image/png'].includes(values.foto.type)) {
+    errors.foto = 'Formato inválido!';
+  } else if (values.foto && values.foto.size > 200000) {
+    errors.foto = 'Arquivo muito grande!';
   }
   return errors;
 };
@@ -83,7 +91,7 @@ class ContactForm extends Component {
       handleSubmit, onSubmit, formHandler, change,
     } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.mySubmit)} className="form-contato">
+      <form onSubmit={handleSubmit(this.mySubmit)} className="form">
         <Field name="foto" label="Foto" component={renderDropzoneInput} />
 
         <Field name="nome" label="Nome" component={renderInput} />

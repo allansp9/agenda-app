@@ -13,6 +13,10 @@ body {
   font-size: $m-size;
 }
 
+.error {
+  color: red;
+}
+
 .is-active {
   background: darken($off-white, 10%);
 }
