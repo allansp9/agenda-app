@@ -9,3 +9,9 @@
     display: none;
   }
 }
+
+.is-active-mobile {
+  @media (max-width: $desktop-breakpoint - 1rem) {
+    flex-wrap: wrap-reverse;
+  }
+}

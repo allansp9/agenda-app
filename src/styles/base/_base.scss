@@ -27,7 +27,6 @@ body {
 }
 
 .wrapper {
-  @media (min-width: $desktop-breakpoint) {
-    display: flex;
-  }
+  display: flex;
+  flex-wrap: wrap;
 }

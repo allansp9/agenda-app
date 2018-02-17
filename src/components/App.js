@@ -11,7 +11,7 @@ import Aside from './Aside';
 import BotaoGrande from './BotaoGrande';
 
 const App = ({ activePage, contatos, contatoVisivel }) => (
-  <div className="wrapper">
+  <div className={`wrapper ${activePage && 'is-active-mobile'} `}>
     <div className="sidebar">
       <Busca />
       <div className="lista-contatos">

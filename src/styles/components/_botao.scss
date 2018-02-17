@@ -30,6 +30,7 @@
 }
 
 .botao__info {
+  @extend .botao;
   border: 1px solid $off-white;
   flex: 1;
 }
