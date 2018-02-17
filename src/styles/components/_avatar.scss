@@ -1,0 +1,15 @@
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar--sidebar {
+  height: $xl-size;
+  width: $xl-size;
+  margin-right: $m-size;
+}
+
+.avatar--grande {
+  height: 12rem;
+  width: 12rem;
+}

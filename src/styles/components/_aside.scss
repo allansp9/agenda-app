@@ -13,3 +13,18 @@
 .aside__header {
   height: $xl-size;
 }
+
+.aside__add-contato {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+}
+
+.aside__header {
+  background: $grey;
+  color: white;
+  display: flex;
+  height: $xl-size;
+  align-items: center;
+  justify-content: center;
+}

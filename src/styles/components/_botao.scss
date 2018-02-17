@@ -3,6 +3,7 @@
 }
 
 .botao--grande {
+  @extend .botao;
   border: none;
   font-size: $font-size-large;
   height: $xl-size;

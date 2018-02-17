@@ -7,7 +7,7 @@ import { normalizePhone } from '../selectors/normalizeForm';
 import encodeBase64 from '../selectors/encodeBase64';
 
 const renderInput = ({ input, meta, label }) => (
-  <div>
+  <div className="form-contato__campo">
     <label htmlFor={label}>
       <input {...input} placeholder={label} />
     </label>
@@ -21,11 +21,16 @@ const renderDropzoneInput = ({
   <div>
     <Dropzone
       name={label}
+      className="form-contato__file"
       onDrop={(filesToUpload, e) => {
         input.onChange(filesToUpload[0]);
       }}
+      multiple={false}
     >
-      <div>Try dropping some files here, or click to select files to upload.</div>
+      {input.value &&
+        !meta.error && (
+          <img src={input.value.preview} alt="preview" className="avatar avatar--grande" />
+        )}
     </Dropzone>
     {meta.dirty && meta.error && <span className="error">{meta.error}</span>}
     {input.value && (
@@ -78,7 +83,7 @@ class ContactForm extends Component {
       handleSubmit, onSubmit, formHandler, change,
     } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.mySubmit)}>
+      <form onSubmit={handleSubmit(this.mySubmit)} className="form-contato">
         <Field name="foto" label="Foto" component={renderDropzoneInput} />
 
         <Field name="nome" label="Nome" component={renderInput} />

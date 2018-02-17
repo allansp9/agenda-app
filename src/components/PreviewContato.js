@@ -10,12 +10,12 @@ const PreviewContato = ({ activeUser, ...contato }) => (
     onKeyUp={() => contato.dispatch(setActive('info', contato.id))}
     className={`lista-contatos__item ${contato.id === activeUser ? 'is-active' : ''}`}
   >
-    <div className="lista-contatos__foto">
-      <img
-        src={!contato.foto ? require('../../public/images/placeholder.png') : contato.foto}
-        alt={contato.nome}
-      />
-    </div>
+    <img
+      src={!contato.foto ? require('../../public/images/placeholder.png') : contato.foto}
+      alt={contato.nome}
+      className="avatar avatar--sidebar"
+    />
+
     <div>
       <div>
         <span className="lista-contatos__nome">{contato.nome}</span>

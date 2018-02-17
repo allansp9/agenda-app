@@ -33,19 +33,6 @@
   }
 }
 
-.lista-contatos__foto {
-  height: $xl-size;
-  margin-right: $s-size;
-  width: $xl-size;
-
-  img {
-    height: inherit;
-    width: inherit;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-}
-
 .lista-contatos__nome {
   font-weight: bold;
 }

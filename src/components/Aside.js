@@ -5,11 +5,10 @@ import setActive from '../actions/active';
 const Aside = ({ children, dispatch }) => (
   <div className="aside">
     {children}
-    <div>
-      <button onClick={() => dispatch(setActive('', ''))} className="botao--grande">
-        Voltar
-      </button>
-    </div>
+
+    <button onClick={() => dispatch(setActive('', ''))} className="botao--grande">
+      Voltar
+    </button>
   </div>
 );
 
