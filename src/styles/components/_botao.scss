@@ -23,3 +23,8 @@
   height: $xl-size;
   width: 100%;
 }
+
+.botao__form {
+  @extend .botao--pequeno;
+  margin: -5rem 0 $m-size 0;
+}

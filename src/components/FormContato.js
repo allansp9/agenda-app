@@ -50,17 +50,17 @@ const renderDropzoneInput = ({
 const validate = (values) => {
   const errors = {};
   if (!values.nome) {
-    errors.nome = 'Required';
+    errors.nome = 'Obrigatório';
   } else if (!values.nome.match(/^[a-zA-Z ]+$/)) {
     errors.nome = 'Nome inválido';
   }
   if (!values.sobrenome) {
-    errors.sobrenome = 'Required';
+    errors.sobrenome = 'Obrigatório';
   } else if (values.sobrenome === values.nome || !values.sobrenome.match(/^[a-zA-Z ]+$/)) {
     errors.sobrenome = 'Sobrenome inválido';
   }
   if (!values.email) {
-    errors.email = 'Required';
+    errors.email = 'Obrigatório';
   } else if (!isEmail(values.email)) {
     errors.email = 'Email inválido';
   }
@@ -98,9 +98,9 @@ class ContactForm extends Component {
 
         <Field name="sobrenome" label="Sobrenome" component={renderInput} />
 
-        <Field name="email" label="email" component={renderInput} />
+        <Field name="email" label="Email" component={renderInput} />
 
-        <Field name="endereco" label="Endereco" component={renderInput} />
+        <Field name="endereco" label="Endereço" component={renderInput} />
 
         <Field
           name="telefone"
@@ -109,7 +109,9 @@ class ContactForm extends Component {
           normalize={normalizePhone}
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="botao__form">
+          Enviar
+        </button>
       </form>
     );
   }
