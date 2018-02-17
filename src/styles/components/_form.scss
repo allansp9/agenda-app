@@ -7,7 +7,7 @@
 }
 
 .form__field {
-  height: $xl-size;
+  // height: $xl-size;
   width: 90%;
   input {
     border: none;
@@ -34,7 +34,4 @@
   justify-content: center;
   margin-right: $s-size;
   width: 11rem;
-}
-
-.form__file__desc {
 }

@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import FormContato from './FormContato';
 import { editContatoAction, removeContatoAction, loadContatos } from '../actions/contatos';
-import setActiveAction from '../actions/active';
+import Header from './Header';
 
 const EditContato = props => (
-  <div>
-    <h1>Editano</h1>
+  <div className="aside__add-contato">
+    <Header>Editar Contato</Header>
     <FormContato
       contato={props.contato}
       formHandler={data => props.dispatch(editContatoAction(data, props.contato.id))}

@@ -16,7 +16,7 @@ const renderInput = ({ input, meta, label }) => (
 );
 
 const renderDropzoneInput = ({
-  input, meta, label, change,
+  input, meta, label, change, contato, activePage,
 }) => (
   <div className="form__file">
     <Dropzone
@@ -27,8 +27,8 @@ const renderDropzoneInput = ({
       }}
       multiple={false}
     >
-      {input.value &&
-        !meta.error && (
+      {!meta.error &&
+        input.value.preview && (
           <img src={input.value.preview} alt="preview" className="avatar avatar--grande" />
         )}
     </Dropzone>
@@ -65,7 +65,7 @@ const validate = (values) => {
     errors.email = 'Email inválido';
   }
 
-  if (values.foto && !['image/jpeg', 'image/png'].includes(values.foto.type)) {
+  if (values.foto && !['image/jpeg', 'image/jpg', 'image/png'].includes(values.foto.type)) {
     errors.foto = 'Formato inválido!';
   } else if (values.foto && values.foto.size > 200000) {
     errors.foto = 'Arquivo muito grande!';
@@ -88,11 +88,11 @@ class ContactForm extends Component {
 
   render() {
     const {
-      handleSubmit, onSubmit, formHandler, change,
+      handleSubmit, onSubmit, formHandler, change, contato, activePage,
     } = this.props;
     return (
       <form onSubmit={handleSubmit(this.mySubmit)} className="form">
-        <Field name="foto" label="Foto" component={renderDropzoneInput} />
+        <Field name="foto" label="Foto" component={renderDropzoneInput} activePage={activePage} />
 
         <Field name="nome" label="Nome" component={renderInput} />
 
@@ -120,6 +120,7 @@ class ContactForm extends Component {
 const mapStateToProps = (state, props) => ({
   contatos: state.contatos,
   initialValues: props.contato || {},
+  activePage: state.active.activePage,
 });
 
 const WrappedContactForm = reduxForm({
