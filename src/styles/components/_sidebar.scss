@@ -4,4 +4,8 @@
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+
+  @media (min-width: $desktop-breakpoint) {
+    flex: 1;
+  }
 }

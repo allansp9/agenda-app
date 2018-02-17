@@ -25,3 +25,9 @@ body {
   display: block;
   font-size: $font-size-s;
 }
+
+.wrapper {
+  @media (min-width: $desktop-breakpoint) {
+    display: flex;
+  }
+}

@@ -1,12 +1,16 @@
 .aside {
-  background: white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
+  background: url("/images/agenda.png");
   display: flex;
+  flex: 1.7;
   flex-flow: column;
+
+  @media (max-width: $desktop-breakpoint - 1rem) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+  }
 }
 
 .aside__header {

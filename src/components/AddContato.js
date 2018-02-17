@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import FormContato from './FormContato';
 import Header from './Header';
+import BotaoGrande from './BotaoGrande';
 import { startAddContato } from '../actions/contatos';
 
 const AddContato = props => (

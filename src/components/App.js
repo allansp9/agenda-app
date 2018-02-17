@@ -8,23 +8,24 @@ import AddContato from './AddContato';
 import EditContato from './EditContato';
 import NovoContato from './NovoContato';
 import Aside from './Aside';
+import BotaoGrande from './BotaoGrande';
 
 const App = ({ activePage, contatos, contatoVisivel }) => (
-  <div>
+  <div className="wrapper">
     <div className="sidebar">
       <Busca />
       <div className="lista-contatos">
+        {contatos.length < 1 && <p className="lista-contatos__msg">Nenhum contato encontrado</p>}
         {contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}
       </div>
-      <NovoContato />
+      <BotaoGrande action="add">Adicionar Contato</BotaoGrande>
     </div>
-    {activePage !== '' && (
-      <Aside>
-        {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
-        {activePage === 'add' && <AddContato />}
-        {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
-      </Aside>
-    )}
+    <Aside>
+      {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
+      {activePage === 'add' && <AddContato />}
+      {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
+      {activePage && <BotaoGrande action="">Voltar</BotaoGrande>}
+    </Aside>
   </div>
 );
 
