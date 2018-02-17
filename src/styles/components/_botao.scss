@@ -19,7 +19,7 @@
 
 .botao--grande {
   @extend .botao;
-  font-size: $font-size-large;
+  font-size: $font-size-l;
   height: $xl-size;
   width: 100%;
 }
@@ -27,4 +27,18 @@
 .botao__form {
   @extend .botao--pequeno;
   margin: -5rem 0 $m-size 0;
+}
+
+.botao__info {
+  border: 1px solid $off-white;
+  flex: 1;
+}
+
+.botao__info--edit {
+  @extend .botao__info;
+}
+
+.botao__info--remove {
+  @extend .botao__info;
+  background: lighten($color: red, $amount: 30);
 }

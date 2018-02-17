@@ -1,0 +1,42 @@
+.info-contato {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+}
+
+.info-contato__head {
+  background: thistle;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.info-contato__body {
+  background: tan;
+  flex: 1.5;
+  padding: 0 $l-size;
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.info-contato__footer {
+  background: skyblue;
+  height: $xl-size;
+  display: flex;
+}
+
+.info-contato__text {
+  margin: $xs-size 0 $m-size 0;
+  border-bottom: 1px solid $off-white;
+  padding-bottom: $xs-size;
+}
+
+.info-contato__title {
+  line-height: 3.3rem;
+  font-weight: lighter;
+  margin: 0;
+}

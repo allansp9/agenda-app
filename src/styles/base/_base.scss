@@ -20,3 +20,8 @@ body {
 .is-active {
   background: darken($off-white, 10%);
 }
+
+.label {
+  display: block;
+  font-size: $font-size-s;
+}

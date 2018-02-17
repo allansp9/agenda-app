@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
+import Header from './Header';
 import setActive from '../actions/active';
 import { removeContatoAction } from '../actions/contatos';
 
@@ -9,15 +11,31 @@ const InfoContato = (props) => {
     id, nome, sobrenome, email, telefone, endereco, foto,
   } = contato;
   return (
-    <div>
-      {foto && <img src={foto} alt={nome} className="" />}
-      <h1>{nome}</h1>
-      <h3>{sobrenome}</h3>
-      <h3>{email}</h3>
-      <h3>{endereco}</h3>
-      <h3>{telefone}</h3>
-      <button onClick={() => dispatch(setActive('edit', id))}>Editar</button>
-      <button onClick={() => dispatch(removeContatoAction(id))}>Remover</button>
+    <div className="info-contato">
+      <Header>Informações do Contato</Header>
+
+      <div className="info-contato__head">
+        {foto && <img src={foto} alt={nome} className="avatar--info" />}
+        <h1 className="info-contato__title">{nome}</h1>
+      </div>
+      <div className="info-contato__footer">
+        <button onClick={() => dispatch(setActive('edit', id))} className="botao__info--edit">
+          Editar
+        </button>
+        <button onClick={() => dispatch(removeContatoAction(id))} className="botao__info--remove">
+          Remover
+        </button>
+      </div>
+      <div className="info-contato__body">
+        <span className="label">Nome</span>
+        <span className="info-contato__text">{`${nome} ${sobrenome}`}</span>
+        <span className="label">E-mail</span>
+        <span className="info-contato__text">{email}</span>
+        <span className="label">Endereço</span>
+        <span className="info-contato__text">{endereco}</span>
+        <span className="label">Telefone</span>
+        <span className="info-contato__text">{telefone}</span>
+      </div>
     </div>
   );
 };

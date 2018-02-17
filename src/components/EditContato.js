@@ -11,7 +11,6 @@ const EditContato = props => (
       contato={props.contato}
       formHandler={data => props.dispatch(editContatoAction(data, props.contato.id))}
     />
-    <button>Deletar</button>
   </div>
 );
 
