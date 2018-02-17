@@ -10,7 +10,7 @@ const InfoContato = (props) => {
   } = contato;
   return (
     <div>
-      <img src={!foto ? require('../../public/images/placeholder.png') : foto} alt="Avatar" />
+      {foto && <img src={foto} alt={nome} className="" />}
       <h1>{nome}</h1>
       <h3>{sobrenome}</h3>
       <h3>{email}</h3>

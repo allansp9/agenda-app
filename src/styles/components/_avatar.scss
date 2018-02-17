@@ -1,9 +1,24 @@
-.avatar {
+.avatar-wrapper {
   border-radius: 50%;
+}
+
+.avatar-wrapper--sidebar {
+  @extend .avatar-wrapper;
+  height: $xl-size;
+  width: $xl-size;
+  margin-right: $m-size;
+  background: url("/images/camera.png");
+  background-position: center center;
+  background-size: cover;
+}
+
+.avatar-image {
+  @extend .avatar-wrapper;
   object-fit: cover;
 }
 
-.avatar--sidebar {
+.avatar-image--sidebar {
+  @extend .avatar-image;
   height: $xl-size;
   width: $xl-size;
   margin-right: $m-size;

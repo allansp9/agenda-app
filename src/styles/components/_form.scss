@@ -26,7 +26,9 @@
 .form__foto {
   align-items: center;
   border-radius: 50%;
-  background: blueviolet;
+  background: url("/images/camera.png");
+  background-position: center center;
+  background-size: cover;
   display: flex;
   height: 11rem;
   justify-content: center;
