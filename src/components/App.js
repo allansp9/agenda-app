@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { selectContatos, selectActiveUser } from '../selectors/contatos';
 import Busca from './Busca';
 import PreviewContato from './PreviewContato';
 import InfoContato from './InfoContato';
 import AddContato from './AddContato';
 import EditContato from './EditContato';
-import NovoContato from './NovoContato';
 import Aside from './Aside';
 import BotaoGrande from './BotaoGrande';
 import Header from './Header';
@@ -46,6 +46,16 @@ const mapStateToProps = (state) => {
     contatoVisivel: selectActiveUser(activeUser, state.contatos)[0],
     activePage,
   };
+};
+
+App.defaultProps = {
+  contatoVisivel: {},
+};
+
+App.propTypes = {
+  activePage: PropTypes.string.isRequired,
+  contatos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  contatoVisivel: PropTypes.objectOf(PropTypes.number),
 };
 
 export default connect(mapStateToProps)(App);

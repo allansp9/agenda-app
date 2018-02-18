@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FormContato from './FormContato';
-import { editContatoAction, removeContatoAction, loadContatos } from '../actions/contatos';
+import { editContatoAction } from '../actions/contatos';
 import Header from './Header';
 
 const EditContato = props => (
