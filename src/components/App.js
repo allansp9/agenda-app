@@ -18,13 +18,19 @@ const App = ({ activePage, contatos, contatoVisivel }) => (
         {contatos.length < 1 && <p className="lista-contatos__msg">Nenhum contato encontrado</p>}
         {contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}
       </div>
-      <BotaoGrande action="add">Adicionar Contato</BotaoGrande>
+      <BotaoGrande action="add" className="botao--adicionar">
+        Adicionar Contato
+      </BotaoGrande>
     </div>
     <Aside>
       {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
       {activePage === 'add' && <AddContato />}
       {activePage === 'edit' && <EditContato contato={contatoVisivel} />}
-      {activePage && <BotaoGrande action="">Voltar</BotaoGrande>}
+      {activePage && (
+        <BotaoGrande action="" className="botao--voltar">
+          Voltar
+        </BotaoGrande>
+      )}
     </Aside>
   </div>
 );

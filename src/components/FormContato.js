@@ -109,7 +109,7 @@ class ContactForm extends Component {
           normalize={normalizePhone}
         />
 
-        <button type="submit" className="botao__form">
+        <button type="submit" className="botao">
           Enviar
         </button>
       </form>

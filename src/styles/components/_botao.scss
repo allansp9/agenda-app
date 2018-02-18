@@ -1,45 +1,88 @@
 .botao {
   cursor: pointer;
+  position: relative;
+  padding: 14px 15px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 0.08em;
   border: none;
-  background: lighten($color: $grey, $amount: 40);
-  transition: background 0.3s ease;
+  border-radius: 0;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+  transition: all 1s ease;
+
+  &:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    z-index: -1;
+    transition: all 0.75s ease 0s;
+  }
 
   &:hover {
-    background: lighten($grey, 30);
-  }
-  &:active {
-    background: lighten($grey, 20);
-  }
-}
+    color: #000 !important;
+    text-shadow: none;
 
-.botao--pequeno {
-  @extend .botao;
-  height: $l-size;
+    &:after {
+      height: 450%;
+    }
+  }
 }
 
 .botao--grande {
   @extend .botao;
-  font-size: $font-size-l;
-  height: $xl-size;
-  width: 100%;
+  background-color: $dim-grey;
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+  z-index: 3;
+  &:before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 0px;
+    z-index: -1;
+    content: "";
+    color: #000 !important;
+    background: $off-white;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+  }
+  &:hover {
+    color: #000 !important;
+    background-color: transparent;
+  }
 }
 
-.botao__form {
-  @extend .botao--pequeno;
-  // margin: -5rem 0 $m-size 0;
+.botao--adicionar {
+  @extend .botao--grande;
+
+  &:hover {
+    &:before {
+      left: 0%;
+      right: auto;
+      width: 100%;
+    }
+  }
 }
 
-.botao__info {
+.botao--voltar {
+  @extend .botao--grande;
+  &:hover {
+    &:before {
+      right: 0%;
+      left: auto;
+      width: 100%;
+    }
+  }
+}
+
+.botao--editar {
   @extend .botao;
-  border: 1px solid $off-white;
   flex: 1;
-}
-
-.botao__info--edit {
-  @extend .botao__info;
-}
-
-.botao__info--remove {
-  @extend .botao__info;
-  background: lighten($color: red, $amount: 30);
 }

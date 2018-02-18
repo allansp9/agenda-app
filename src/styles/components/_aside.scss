@@ -1,12 +1,15 @@
 .aside {
-  background: url("/images/agenda.png");
   display: flex;
   flex-flow: column;
   flex-basis: 100vw;
   height: 100vh;
 
   @media (min-width: $desktop-breakpoint) {
-    flex: 1.7;
+    background: url("/images/agenda.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    flex: 2;
   }
 }
 

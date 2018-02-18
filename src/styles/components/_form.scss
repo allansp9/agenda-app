@@ -5,10 +5,13 @@
   flex: 1;
   flex-flow: column;
   justify-content: space-around;
+
+  button {
+    margin-top: -4rem;
+  }
 }
 
 .form__field {
-  // height: $xl-size;
   width: 90%;
   input {
     border: none;
@@ -16,6 +19,10 @@
     border-right: 1px solid $grey;
     height: $l-size;
     width: 100%;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    width: 40rem;
   }
 }
 

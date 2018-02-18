@@ -16,7 +16,7 @@ class Busca extends React.Component {
           name="Pesquisar"
           onChange={this.changeHandler}
           type="text"
-          placeholder="Pesquisar"
+          placeholder="🔍 Pesquisar"
           value={this.props.filter.text}
           className="header__input"
         />

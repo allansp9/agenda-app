@@ -1,4 +1,5 @@
 .sidebar {
+  background: $languid-lavender;
   display: flex;
   flex-flow: column;
   flex-basis: 100vw;
@@ -7,6 +8,7 @@
   justify-content: space-between;
 
   @media (min-width: $desktop-breakpoint) {
+    border-right: $normal-border;
     flex: 1;
   }
 }

@@ -19,10 +19,10 @@ const InfoContato = (props) => {
         <h1 className="info-contato__title">{nome}</h1>
       </div>
       <div className="info-contato__footer">
-        <button onClick={() => dispatch(setActive('edit', id))} className="botao__info--edit">
+        <button onClick={() => dispatch(setActive('edit', id))} className="botao--editar">
           Editar
         </button>
-        <button onClick={() => dispatch(removeContatoAction(id))} className="botao__info--remove">
+        <button onClick={() => dispatch(removeContatoAction(id))} className="botao--editar">
           Remover
         </button>
       </div>

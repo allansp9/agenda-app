@@ -1,8 +1,11 @@
 // Colors
 $dark-grey: #333;
 $grey: #666;
-$blue: #1c88bf;
-$dark-blue: #364051;
+$dim-grey: #69626d;
+$paste-purple: #b09cbc;
+$lavender-grey: #c3b3cc;
+$thistle: #cebcd8;
+$languid-lavender: #dcc7e8;
 $off-white: #f7f7f7;
 // Font Size
 $font-size-s: 1.4rem;
@@ -15,3 +18,7 @@ $l-size: 3.2rem;
 $xl-size: 5rem;
 
 $desktop-breakpoint: 45rem;
+
+//borders
+
+$normal-border: 1px solid $off-white;
