@@ -16,9 +16,7 @@ const renderInput = ({ input, meta, label }) => (
   </div>
 );
 
-const renderDropzoneInput = ({
-  input, meta, label,
-}) => (
+const renderDropzoneInput = ({ input, meta, label }) => (
   <div>
     <Dropzone
       name={label}
@@ -88,9 +86,7 @@ class ContactForm extends Component {
   };
 
   render() {
-    const {
-      handleSubmit, onSubmit, formHandler, change, contato, activePage,
-    } = this.props;
+    const { handleSubmit, activePage } = this.props;
     return (
       <form onSubmit={handleSubmit(this.mySubmit)} className="form">
         <Field name="foto" label="Foto" component={renderDropzoneInput} activePage={activePage} />
@@ -126,6 +122,12 @@ renderInput.propTypes = {
 
 renderDropzoneInput.propTypes = {
   ...renderInput.propTypes,
+};
+
+ContactForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  formHandler: PropTypes.func.isRequired,
+  activePage: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
