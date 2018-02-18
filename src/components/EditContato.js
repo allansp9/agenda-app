@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import FormContato from './FormContato';
 import { editContatoAction } from '../actions/contatos';
 import Header from './Header';
@@ -13,5 +15,10 @@ const EditContato = props => (
     />
   </div>
 );
+
+EditContato.propTypes = {
+  contato: PropTypes.objectOf(PropTypes.node).isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect()(EditContato);

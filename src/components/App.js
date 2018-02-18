@@ -55,7 +55,7 @@ App.defaultProps = {
 App.propTypes = {
   activePage: PropTypes.string.isRequired,
   contatos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  contatoVisivel: PropTypes.objectOf(PropTypes.number),
+  contatoVisivel: PropTypes.objectOf(PropTypes.node),
 };
 
 export default connect(mapStateToProps)(App);
