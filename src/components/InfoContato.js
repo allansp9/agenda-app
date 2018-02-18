@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
 import setActive from '../actions/active';
@@ -38,6 +39,11 @@ const InfoContato = (props) => {
       </div>
     </div>
   );
+};
+
+InfoContato.propTypes = {
+  contato: PropTypes.objectOf(PropTypes.node).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(InfoContato);
