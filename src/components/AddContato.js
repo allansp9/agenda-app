@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import FormContato from './FormContato';
 import Header from './Header';
-import BotaoGrande from './BotaoGrande';
 import { startAddContato } from '../actions/contatos';
 
 const AddContato = props => (
@@ -12,5 +12,9 @@ const AddContato = props => (
     <FormContato formHandler={data => props.dispatch(startAddContato(data))} />
   </div>
 );
+
+AddContato.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect()(AddContato);
