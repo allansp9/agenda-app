@@ -1,23 +1,19 @@
 .form {
   align-items: center;
+
   background: white;
   display: flex;
   flex: 1;
   flex-flow: column;
   justify-content: space-around;
-
-  button {
-    margin-top: -4rem;
-  }
 }
 
 .form__field {
   width: 90%;
   input {
-    border: none;
-    border-bottom: 1px solid $grey;
-    border-right: 1px solid $grey;
+    border: $normal-border;
     height: $l-size;
+    padding-left: $s-size;
     width: 100%;
   }
 
@@ -32,14 +28,18 @@
 }
 
 .form__foto {
+  align-self: center;
   align-items: center;
   border-radius: 50%;
   background: url("/images/camera.png");
   background-position: center center;
   background-size: cover;
-  display: flex;
-  height: 11rem;
+  height: 12rem;
+  width: 12rem;
+  margin: 0 auto;
   justify-content: center;
-  margin-right: $s-size;
-  width: 11rem;
+}
+
+.form__file__desc {
+  text-align: center;
 }

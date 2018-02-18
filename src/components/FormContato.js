@@ -18,7 +18,7 @@ const renderInput = ({ input, meta, label }) => (
 const renderDropzoneInput = ({
   input, meta, label, change, contato, activePage,
 }) => (
-  <div className="form__file">
+  <div>
     <Dropzone
       name={label}
       className="form__foto"
@@ -38,8 +38,8 @@ const renderDropzoneInput = ({
       {meta.dirty && meta.error && <span className="error">{meta.error}</span>}
       <div>
         {input.value && (
-          <button onClick={() => input.onChange('')} type="button" className="botao--pequeno">
-            Remover arquivo
+          <button onClick={() => input.onChange('')} type="button" className="botao">
+            Remover
           </button>
         )}
       </div>

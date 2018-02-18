@@ -24,10 +24,16 @@
 }
 
 .aside__header {
-  background: $grey;
-  color: white;
+  background: $dim-grey;
   display: flex;
   height: $xl-size;
   align-items: center;
   justify-content: center;
+  color: #fff;
+  font-size: $font-size-l;
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
 }
