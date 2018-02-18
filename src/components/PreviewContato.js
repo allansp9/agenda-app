@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import setActive from '../actions/active';
 
 const PreviewContato = ({ activeUser, ...contato }) => (
@@ -26,5 +28,9 @@ const PreviewContato = ({ activeUser, ...contato }) => (
     </div>
   </div>
 );
+
+PreviewContato.propTypes = {
+  activeUser: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default connect(state => ({ activeUser: state.active.activeUser }))(PreviewContato);
