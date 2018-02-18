@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import setTextFilter from '../actions/filter';
 
 class Busca extends React.Component {
@@ -24,6 +26,15 @@ class Busca extends React.Component {
     );
   }
 }
+
+Busca.defaultProps = {
+  filter: '',
+};
+
+Busca.propTypes = {
+  filter: PropTypes.objectOf(PropTypes.string),
+  dispatch: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   filter: state.filter,
