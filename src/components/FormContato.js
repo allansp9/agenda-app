@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, change } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 import isEmail from 'sane-email-validation';
 import { normalizePhone } from '../selectors/normalizeForm';
@@ -16,7 +17,7 @@ const renderInput = ({ input, meta, label }) => (
 );
 
 const renderDropzoneInput = ({
-  input, meta, label, change, contato, activePage,
+  input, meta, label,
 }) => (
   <div>
     <Dropzone
@@ -116,6 +117,16 @@ class ContactForm extends Component {
     );
   }
 }
+
+renderInput.propTypes = {
+  input: PropTypes.objectOf(PropTypes.any).isRequired,
+  meta: PropTypes.objectOf(PropTypes.any).isRequired,
+  label: PropTypes.string.isRequired,
+};
+
+renderDropzoneInput.propTypes = {
+  ...renderInput.propTypes,
+};
 
 const mapStateToProps = (state, props) => ({
   contatos: state.contatos,
