@@ -12,6 +12,7 @@
 
 .is-active-mobile {
   @media (max-width: $desktop-breakpoint - 1rem) {
-    flex-wrap: wrap-reverse;
+    display: flex;
+    order: -1;
   }
 }

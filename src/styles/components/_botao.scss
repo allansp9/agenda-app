@@ -1,4 +1,5 @@
 .botao {
+  background-color: $grey;
   cursor: pointer;
   position: relative;
   padding: 14px 15px;
@@ -84,4 +85,11 @@
 .botao--editar {
   @extend .botao;
   flex: 1;
+  &:first-child {
+    border-right: $normal-border;
+    background: $dim-grey;
+  }
+  &:last-child {
+    background: lightcoral;
+  }
 }

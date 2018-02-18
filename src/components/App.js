@@ -11,8 +11,8 @@ import Aside from './Aside';
 import BotaoGrande from './BotaoGrande';
 
 const App = ({ activePage, contatos, contatoVisivel }) => (
-  <div className={`wrapper ${activePage && 'is-active-mobile'} `}>
-    <div className="sidebar">
+  <div className="wrapper">
+    <div className={`sidebar ${activePage && 'show-for-desktop'}`}>
       <Busca />
       <div className="lista-contatos">
         {contatos.length < 1 && <p className="lista-contatos__msg">Nenhum contato encontrado</p>}
@@ -24,7 +24,7 @@ const App = ({ activePage, contatos, contatoVisivel }) => (
         </BotaoGrande>
       )}
     </div>
-    <Aside>
+    <Aside activePage={activePage}>
       {activePage === 'info' && <InfoContato contato={contatoVisivel} />}
       {activePage === 'add' && <AddContato />}
       {activePage === 'edit' && <EditContato contato={contatoVisivel} />}

@@ -1,10 +1,12 @@
 .aside {
-  display: flex;
+  display: none;
   flex-flow: column;
   flex-basis: 100vw;
   height: 100vh;
 
   @media (min-width: $desktop-breakpoint) {
+    display: flex;
+    background-color: black;
     background: url("/images/agenda.png");
     background-position: center center;
     background-repeat: no-repeat;
