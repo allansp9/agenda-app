@@ -9,11 +9,13 @@ import EditContato from './EditContato';
 import NovoContato from './NovoContato';
 import Aside from './Aside';
 import BotaoGrande from './BotaoGrande';
+import Header from './Header';
 
 const App = ({ activePage, contatos, contatoVisivel }) => (
   <div className="wrapper">
     <div className={`sidebar ${activePage && 'show-for-desktop'}`}>
       <Busca />
+      <Header>Contatos</Header>
       <div className="lista-contatos">
         {contatos.length < 1 && <p className="lista-contatos__msg">Nenhum contato encontrado</p>}
         {contatos.map(contato => <PreviewContato key={contato.id} {...contato} />)}

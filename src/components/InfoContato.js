@@ -12,7 +12,7 @@ const InfoContato = (props) => {
   } = contato;
   return (
     <div className="info-contato">
-      <Header>Informações do Contato</Header>
+      <Header>Informações</Header>
 
       <div className="info-contato__head">
         {foto && <img src={foto} alt={nome} className="avatar--info" />}
