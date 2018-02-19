@@ -50,7 +50,7 @@ const validate = (values) => {
   const errors = {};
   if (!values.nome) {
     errors.nome = 'Obrigatório';
-  } else if (!values.nome.match(/^[a-zA-Z ]+$/)) {
+  } else if (!values.nome.match(/^[A-zÀ-ú ]+$/)) {
     errors.nome = 'Nome inválido';
   }
   if (!values.sobrenome) {
